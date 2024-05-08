@@ -14,7 +14,7 @@ import {
 } from '@shopify/restyle';
 
 import {Text, VStack} from '../../../components';
-import {type Theme} from '../../../theme';
+import theme, {type Theme} from '../../../theme';
 
 type Props = VariantProps<Theme, 'inputVariantsBase'> &
   VariantProps<Theme, 'inputVariantDisabledState', 'disabled'> &
@@ -95,7 +95,12 @@ export const Input: FC<InputProps> = ({
         {...(error && {error: `${variant}Error`})}
         {...(success && {success: `${variant}Success`})}
         {...(disabled && {disabled: `${variant}Disabled`})}>
-        <TextInput {...rest} editable={!disabled} placeholder={placeholder} />
+        <TextInput
+          style={{color: theme.colors.black}}
+          {...rest}
+          editable={!disabled}
+          placeholder={placeholder}
+        />
       </RestyleView>
     </VStack>
   );
